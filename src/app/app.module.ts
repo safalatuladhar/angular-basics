@@ -8,12 +8,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { PlaygroundComponent } from './playground/playground.component';
+import { DirectivesComponent } from './directives/directives.component';
 // import { SpecialDirective } from './directives/special.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlaygroundComponent,
+    DirectivesComponent,
     // SpecialDirective
   ],
   imports: [
