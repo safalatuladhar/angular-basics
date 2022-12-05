@@ -52,6 +52,4 @@ constructor() {}
     // this.imageHide = "";
   }
 
-
-
 }

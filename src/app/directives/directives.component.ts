@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
 @Component({
   selector: 'app-directives',
@@ -38,5 +38,6 @@ export class DirectivesComponent {
   checkAge(person: any): boolean{
     return person.age < 20;
   }
+
 
 }

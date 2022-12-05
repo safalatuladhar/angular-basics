@@ -5,4 +5,14 @@
 
 <!-- <app-playground></app-playground> -->
 
-<app-directives></app-directives>
+<!-- <app-directives></app-directives> -->
+
+<!-- <button class="btn btn-primary" []>Delete</button> -->
+
+Enter card name:
+<input type="text" (keyup.enter)="addCard(addInp.value)" #addInp />
+
+<app-child [cards]="cards" (deleteEvent)="removeCard($event)"></app-child>
+
+<hr />
+<p>Removed {{ deletedCards }}</p>

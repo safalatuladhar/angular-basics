@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { PlaygroundComponent } from './playground/playground.component';
 import { DirectivesComponent } from './directives/directives.component';
+import { ChildComponent } from './child/child.component';
 // import { SpecialDirective } from './directives/special.directive';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { DirectivesComponent } from './directives/directives.component';
     AppComponent,
     PlaygroundComponent,
     DirectivesComponent,
+    ChildComponent,
     // SpecialDirective
   ],
   imports: [

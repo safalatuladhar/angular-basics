@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let card of cardArr; let i = index">
+    {{ card }}
+    <button class="btn btn-primary" (click)="delCard(i)">Delete</button>
+  </li>
+</ul>
