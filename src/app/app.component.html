@@ -7,7 +7,7 @@
 
 <!-- <app-directives></app-directives> -->
 
-<!-- <button class="btn btn-primary" []>Delete</button> -->
+<!-- <button class="btn btn-primary" []>Delete</button>
 
 Enter card name:
 <input type="text" (keyup.enter)="addCard(addInp.value)" #addInp />
@@ -15,4 +15,9 @@ Enter card name:
 <app-child [cards]="cards" (deleteEvent)="removeCard($event)"></app-child>
 
 <hr />
-<p>Removed {{ deletedCards }}</p>
+<p>Removed {{ deletedCards }}</p> -->
+
+<app-header></app-header>
+
+<!-- <app-cards></app-cards> -->
+<router-outlet></router-outlet>

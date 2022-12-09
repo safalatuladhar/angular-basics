@@ -1,32 +1,25 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import { PlaygroundComponent } from './playground/playground.component';
-import { DirectivesComponent } from './directives/directives.component';
-import { ChildComponent } from './child/child.component';
-// import { SpecialDirective } from './directives/special.directive';
+import { MaterialModule } from './material/material.module';
+import { HeaderComponent } from './components/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardsWrapperModule } from './cards-wrapper/cards-wrapper.module';
+import { PeriodicTableModule } from './periodic-table/periodic-table.module';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlaygroundComponent,
-    DirectivesComponent,
-    ChildComponent,
-    // SpecialDirective
+    HeaderComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatButtonModule,
+    AppRoutingModule,
+    MaterialModule,
+    CardsWrapperModule,
+    PeriodicTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

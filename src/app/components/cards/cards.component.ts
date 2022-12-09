@@ -1,4 +1,5 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ImageInfo } from 'src/app/interface/imageInfo.interface';
 
 @Component({
   selector: 'app-cards',
@@ -6,50 +7,36 @@ import { Component,OnInit } from '@angular/core';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
+  size: string = '1px';
+  style: string = 'font-size: 1.2rem; color: cornflowerblue;';
+  imageUrl: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBl5jhEoTrEkWj2N8RU5b74RQaqSN41t5P7fv0CwLRFVsMpIH7hNIhsATakpat69F-7WU&usqp=CAU';
 
+image_name = "";
 
+  @Input() titles: string[] = [];
+  cardsTitle: string[] = ['Maia', 'Dylan', 'Minoru', 'Amarachi', 'Ceallagh'];
 
-constructor() {}
+  @Output() titleEvent$ = new EventEmitter<string>();
+
+  imageArry : ImageInfo[] = [];
+
+  onAddCard(title: string): void {
+    this.titleEvent$.emit(title);
+  }
+  
+
+  constructor() { }
 
   ngOnInit(): void {
-    
+    this.imageArry.push({name : 'test', url: ''});
   }
-  imageHide = "hide";
-  url = "";
-  image_src = "";
-  image_name = "";
-  current_image = "";
 
-  // imageArray = [{}];
-
-  image = new Map();
-
-  // addNew(){
-  //   this.myArray.push(this.myArray.length + 1);
-  //   console.log(this.myArray);
-  // }
-
-  onClick(img_name: string, img_src: string){
-    console.log(img_name);
-    this.image.set(img_name, img_src);
-    this.url = "Image " + img_name +  " added successfully.";
-    console.log(this.url);
+  addImage(image : ImageInfo)
+  {
+    this.imageArry.push(image);
     
   }
 
-  display(img_detail : string){
-    if(this.image.has(img_detail)){
-      this.current_image =  img_detail + 'found';
-      this.current_image = this.image.get(img_detail);
 
-    }
-    else{
-      this.current_image = "Not Found"
-      this.current_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkYpUPzpFVGfKoeVxGtHQ5LxnlrE8uPiTzTOgPjbIzPA&s"
-    }
-    console.log(this.current_image);
-
-    // this.imageHide = "";
-  }
 
 }
