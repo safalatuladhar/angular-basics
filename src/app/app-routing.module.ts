@@ -5,7 +5,7 @@ import { CardsWrapperComponent } from './forms/cards-wrapper/cards-wrapper.compo
 const routes: Routes = [
   {path: '', component: CardsWrapperComponent},
   {path: 'cards', loadChildren: () => import('./forms/cards-wrapper/cards-wrapper.module').then(m => m.CardsWrapperModule)},
-  {path: 'periodic-table', loadChildren: () => import('./periodic-table/periodic-table.module').then(m => m.PeriodicTableModule)},
+  {path: 'periodic-table', loadChildren: () => import('./forms/periodic-table/periodic-table.module').then(m => m.PeriodicTableModule)},
   {path: 'home', loadChildren: ()=> import('./forms/home/home.module').then(m => m.HomeModule)},
   {path: '**', loadChildren: ()=> import('./forms/not-found/not-found.module').then(m => m.NotFoundModule)},
 

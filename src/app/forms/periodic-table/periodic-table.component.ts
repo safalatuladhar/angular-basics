@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PeriodicElement } from 'src/app/interface/periodic-element';
+import AuthServiceService from 'src/app/service/auth-service.service';
 
 @Component({
   selector: 'app-periodic-table',
   templateUrl: './periodic-table.component.html',
-  styleUrls: ['./periodic-table.component.css']
+  styleUrls: ['./periodic-table.component.css'],
+  providers : [AuthServiceService]
 })
 export class PeriodicTableComponent implements OnInit {
 

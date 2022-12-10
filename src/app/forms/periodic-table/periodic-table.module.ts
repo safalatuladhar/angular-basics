@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { PeriodicTableComponent } from '../forms/periodic-table/periodic-table.component';
-import { DataGridComponent } from '../components/data-grid/data-grid.component';
-import { MaterialModule } from '../material/material.module';
+import { PeriodicTableComponent } from './periodic-table.component';
+import { DataGridComponent } from '../../components/data-grid/data-grid.component';
+import { MaterialModule } from '../../material/material.module';
+import AuthServiceService from 'src/app/service/auth-service.service';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   PeriodicTableComponent,
   DataGridComponent
   ],
+  providers: [AuthServiceService],
   imports: [
     CommonModule,
     MaterialModule,

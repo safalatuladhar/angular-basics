@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PeriodicElement } from './interface/periodic-element';
+import AuthServiceService from './service/auth-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,10 @@ import { PeriodicElement } from './interface/periodic-element';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'my-first-project';
+  constructor(private readonly authService: AuthServiceService) {}
+
 
 // cards: string[] = [];
 // deletedCards: any;;
