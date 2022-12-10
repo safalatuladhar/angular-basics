@@ -4,17 +4,18 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CardsWrapperModule } from './cards-wrapper/cards-wrapper.module';
+import { CardsWrapperModule } from './forms/cards-wrapper/cards-wrapper.module';
 import { PeriodicTableModule } from './periodic-table/periodic-table.module';
 import { HomeModule } from './forms/home/home.module';
-
-
+import { ErrorModule } from './error/error.module';
+import { NotFoundComponent } from './forms/not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+   
   ],
   imports: [
     BrowserAnimationsModule,
@@ -22,7 +23,8 @@ import { HomeModule } from './forms/home/home.module';
     MaterialModule,
     CardsWrapperModule,
     PeriodicTableModule,
-    HomeModule
+    HomeModule,
+    ErrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

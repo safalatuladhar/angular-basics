@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { CardsWrapperComponent } from '../forms/cards-wrapper/cards-wrapper.component';
-import { CardsComponent } from '../components/cards/cards.component';
-import { MaterialModule } from '../material/material.module';
+import { CardsWrapperComponent } from './cards-wrapper.component';
+import { CardsComponent } from '../../components/cards/cards.component';
+import { MaterialModule } from '../../material/material.module';
 
 const routes: Routes = [
   {path: '', component: CardsWrapperComponent}
