@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { PeriodicElement } from './interface/periodic-element';
 import AuthServiceService from './service/auth-service.service';
 
@@ -7,7 +8,7 @@ import AuthServiceService from './service/auth-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'my-first-project';
   constructor(private readonly authService: AuthServiceService) {}
@@ -41,6 +42,25 @@ tableData: PeriodicElement[] = [
 
   onaddCard(title: string) {
     this.cardsTitle.push(title);
+  }
+
+  observable: Observable<number>;
+
+  ngOnInit(): void {
+    // initializing an observable
+    this.observable = new Observable(subscriber => {
+      // emitting next value
+      subscriber.next(101);
+      // emitting value 5 after 5 seconds
+      setTimeout(() => subscriber.next(5), 5000);
+      subscriber.next(1);
+      setTimeout(() => {
+        // after 7 seconds emitting value 66
+        subscriber.next(66);
+        // after 7 seconds completing the observable meaning observable is done emitting the value
+        subscriber.complete();
+      }, 7000);
+    });
   }
 
   }

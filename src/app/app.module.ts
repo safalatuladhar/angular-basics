@@ -10,23 +10,26 @@ import { HomeModule } from './forms/home/home.module';
 import { ErrorModule } from './error/error.module';
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { PeriodicTableService } from './service/periodic-table.service';
+import { HttpClientModule } from '@angular/common/http';
+import AuthServiceService from './service/auth-service.service';
 
-const routes: Routes = [
-  {
-    path: 'cards',
-    loadChildren: () => import('./forms/cards-wrapper/cards-wrapper.module').then(m => m.CardsWrapperModule)
-  },
-  {
-    path: 'periodic-table',
-    loadChildren: () => import('./forms/periodic-table/periodic-table.module').then(m => m.PeriodicTableModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  }
-];
+// const routes: Routes = [
+//   {
+//     path: 'cards',
+//     loadChildren: () => import('./forms/cards-wrapper/cards-wrapper.module').then(m => m.CardsWrapperModule)
+//   },
+//   {
+//     path: 'periodic-table',
+//     loadChildren: () => import('./forms/periodic-table/periodic-table.module').then(m => m.PeriodicTableModule),
+//     canActivate: [AuthGuard]
+//   },
+//   {
+//     path: '',
+//     redirectTo: '',
+//     pathMatch: 'full'
+//   }
+// ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +40,9 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    CardsWrapperModule,
-    PeriodicTableModule,
-    HomeModule,
-    ErrorModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

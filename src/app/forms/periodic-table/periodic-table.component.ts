@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { IDataGrid } from 'src/app/interface/IDataGrid.interface';
 import { PeriodicElement } from 'src/app/interface/periodic-element';
 import AuthServiceService from 'src/app/service/auth-service.service';
+import { PeriodicTableService } from 'src/app/service/periodic-table.service';
 
 @Component({
   selector: 'app-periodic-table',
@@ -10,11 +13,10 @@ import AuthServiceService from 'src/app/service/auth-service.service';
 })
 export class PeriodicTableComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  constructor(private readonly http: HttpClient,  private readonly periodicTableService: PeriodicTableService) { }
 
+ 
   columnHeader = {
     id: 'ID',
     element: 'Element',
@@ -22,17 +24,32 @@ export class PeriodicTableComponent implements OnInit {
     symbol: 'Symbol'
   };
 
-  periodicElements: PeriodicElement[] = [
-    {id: 1, element: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {id: 2, element: 'Helium', weight: 4.0026, symbol: 'He'},
-    {id: 3, element: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {id: 4, element: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {id: 5, element: 'Boron', weight: 10.811, symbol: 'B'},
-    {id: 6, element: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {id: 7, element: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {id: 8, element: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {id: 9, element: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {id: 10, element: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
+  // periodicElements: PeriodicElement[] = [
+    // {id: 1, element: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+    // {id: 2, element: 'Helium', weight: 4.0026, symbol: 'He'},
+    // {id: 3, element: 'Lithium', weight: 6.941, symbol: 'Li'},
+    // {id: 4, element: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+    // {id: 5, element: 'Boron', weight: 10.811, symbol: 'B'},
+    // {id: 6, element: 'Carbon', weight: 12.0107, symbol: 'C'},
+    // {id: 7, element: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+    // {id: 8, element: 'Oxygen', weight: 15.9994, symbol: 'O'},
+    // {id: 9, element: 'Fluorine', weight: 18.9984, symbol: 'F'},
+    // {id: 10, element: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  // ];
+
+  periodicElements:IDataGrid[] = [];
+
+   ngOnInit(): void {
+      this.http.get<IDataGrid[]>(' http://localhost:3000/periodicElement').subscribe(elements => {
+      this.periodicElements = elements;
+      console.log(this.periodicElements);
+    });
+  }
+
+  addElement(): void {
+    const el: IDataGrid = {id: 11, element: 'njnj', weight: 20.1797, symbol: 'Ne'};
+    this.periodicTableService.addElement(el);
+  }
+
 
 }
