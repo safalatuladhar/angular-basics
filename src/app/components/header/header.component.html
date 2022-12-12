@@ -12,5 +12,9 @@
     <mat-icon>login</mat-icon>
   </button>
 
+  <button *ngIf="isLoggedIn" (click)="logout()" mat-icon-button aria-label="login">
+    <mat-icon>logout</mat-icon>
+  </button>
+
 
 </mat-toolbar>

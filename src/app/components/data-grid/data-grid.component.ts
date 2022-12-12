@@ -10,22 +10,34 @@ import { IDataGrid } from 'src/app/interface/IDataGrid.interface';
 })
 export class DataGridComponent implements OnInit, OnChanges {
 
-  @Input() tableData: any[] = [];
+  // @Input() tableData: any[] = [];
   @Input() columnHeader: {[key: string]: string | number;} = {};
+
+  @Input() set tableData(data: IDataGrid[]) {
+    this._tableData = data;
+    this.dataSource = new MatTableDataSource(this._tableData);
+  }
+
+  get tableData(): IDataGrid[] {
+    return this._tableData;
+  }
+
+  _tableData: IDataGrid[] = [];
+
   objectKeys = Object.keys;
   dataSource!: MatTableDataSource<any>;
 
-    ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.tableData);
+    ngOnInit(): void {
+    this.dataSource = new MatTableDataSource(this._tableData);
     }
 
      constructor(private readonly router: Router,
       private readonly route: ActivatedRoute) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['tableData']?.currentValue?.length !== changes['tableData']?.previousValue?.length) {
-      this.dataSource = new MatTableDataSource(this.tableData);
-    }
+    // if (changes['tableData']?.currentValue?.length !== changes['tableData']?.previousValue?.length) {
+    //   this.dataSource = new MatTableDataSource(this.tableData);
+    // }
   }
 
     goToItemDetails(data : IDataGrid): void {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry } from 'rxjs';
+import { BehaviorSubject, catchError, retry } from 'rxjs';
 import { ConfigService } from '../config/config.service';
 import { IDataGrid } from '../interface/IDataGrid.interface';
 
@@ -8,6 +8,8 @@ import { IDataGrid } from '../interface/IDataGrid.interface';
   providedIn: 'root'
 })
 export class PeriodicTableService {
+
+  periodicElements$$$ = new BehaviorSubject<IDataGrid[]>([]);
 
   constructor(private readonly http: HttpClient,private readonly configService: ConfigService) { }
 
@@ -19,7 +21,10 @@ addElement(element: IDataGrid): void {
       .pipe(
         retry(3),
         catchError(e => this.configService.handleError(e))
-      ).subscribe();
+      ).subscribe((el: IDataGrid) => {
+        this.periodicElements$$$.value.push(el);
+        this.periodicElements$$$.next(this.periodicElements$$$.value);
+    });
   }
 
 }

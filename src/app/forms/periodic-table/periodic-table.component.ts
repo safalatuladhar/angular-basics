@@ -41,15 +41,22 @@ export class PeriodicTableComponent implements OnInit {
 
    ngOnInit(): void {
       this.http.get<IDataGrid[]>(' http://localhost:3000/periodicElement').subscribe(elements => {
-      this.periodicElements = elements;
-      console.log(this.periodicElements);
-    });
-  }
+      // this.periodicElements = elements;
+      // console.log(this.periodicElements);
 
-  addElement(): void {
-    const el: IDataGrid = {id: 11, element: 'njnj', weight: 20.1797, symbol: 'Ne'};
+      this.periodicTableService.periodicElements$$$.next(elements);
+    });
+
+    this.periodicTableService.periodicElements$$$.subscribe(elements => this.periodicElements = [].concat(elements));
+
+      
+    };
+
+    addElement(): void {
+    const el: IDataGrid = {id: 10, element: 'Neon', weight: 20.1797, symbol: 'Ne'};
     this.periodicTableService.addElement(el);
   }
+  }
 
 
-}
+
